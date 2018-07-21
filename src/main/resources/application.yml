@@ -1,6 +1,3 @@
-spring:
-  application:
-    name: springcloud-eureka
 security:
   basic:
     enabled: true
