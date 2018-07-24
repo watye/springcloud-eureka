@@ -11,4 +11,9 @@ logging:
   level.org.springframework.web: info
   debug: false
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
