@@ -24,6 +24,9 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.RC2</spring-cloud.version>
 		<docker.image.prefix>tl</docker.image.prefix>
+		<docker.registry.url>www.talelife.com:5000</docker.registry.url>
+        <docker.repostory>www.talelife.com:5000</docker.repostory>
+        <docker.registry.name>springcloud-eureka</docker.registry.name>
 	</properties>
 
 	<dependencies>
@@ -67,13 +70,37 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<!-- docker打包插件 -->
+			<!-- <plugin>
+	            <groupId>com.spotify</groupId>
+	            <artifactId>docker-maven-plugin</artifactId>
+	            <version>1.0.0</version>
+	            <configuration>
+	                <imageName>springcloud-eureka</imageName>
+	                <baseImage>java</baseImage>
+	                <maintainer>docker_maven docker_maven@email.com</maintainer>
+	                <workdir>/ROOT</workdir>
+	                <cmd>["java", "-version"]</cmd>
+	                <entryPoint>["java", "-jar", "${project.build.finalName}.jar"]</entryPoint>
+	                这里是复制 jar 包到 docker 容器指定目录配置
+	                <resources>
+	                    <resource>
+	                        <targetPath>/ROOT</targetPath>
+	                        <directory>${project.build.directory}</directory>
+	                        <include>${project.build.finalName}.jar</include>
+	                    </resource>
+	                </resources>
+	            </configuration>
+	        </plugin> -->
 			<plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.3</version>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <imageName>www.talelife.com:5000/${project.artifactId}.jar</imageName>
+                    <!-- <registryUrl>http://www.talelife.com:5000</registryUrl> -->
                     <dockerDirectory>src/main/resources</dockerDirectory>
+                    <dockerHost>http://www.talelife.com:5000</dockerHost>
+                    <dockerCertPath>D:/tmp</dockerCertPath>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -83,6 +110,47 @@
                     </resources>
                 </configuration>
             </plugin>
+            <!-- <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>push-image</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <serverId>harbor</serverId>
+                    <registryUrl>${docker.registry.url}</registryUrl>
+                    <imageName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:latest</imageName>
+                    <imageTags>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                    <pushImage>true</pushImage>
+                    <baseImage>${docker.repostory}/library/java:v1.8</baseImage>
+                    <exposes>
+                        <expose>45030</expose>
+                    </exposes>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin> -->
 		</plugins>
 	</build>
 
