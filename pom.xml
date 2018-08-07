@@ -70,36 +70,41 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<!-- docker打包插件 -->
-			<!-- <plugin>
-	            <groupId>com.spotify</groupId>
-	            <artifactId>docker-maven-plugin</artifactId>
-	            <version>1.0.0</version>
-	            <configuration>
-	                <imageName>springcloud-eureka</imageName>
-	                <baseImage>java</baseImage>
-	                <maintainer>docker_maven docker_maven@email.com</maintainer>
-	                <workdir>/ROOT</workdir>
-	                <cmd>["java", "-version"]</cmd>
-	                <entryPoint>["java", "-jar", "${project.build.finalName}.jar"]</entryPoint>
-	                这里是复制 jar 包到 docker 容器指定目录配置
-	                <resources>
-	                    <resource>
-	                        <targetPath>/ROOT</targetPath>
-	                        <directory>${project.build.directory}</directory>
-	                        <include>${project.build.finalName}.jar</include>
-	                    </resource>
-	                </resources>
-	            </configuration>
-	        </plugin> -->
 			<plugin>
+			  <groupId>com.spotify</groupId>
+			  <artifactId>dockerfile-maven-plugin</artifactId>
+			  <version>1.3.7</version>
+			  <!-- <executions>
+			    <execution>
+			      <id>default</id>
+			      <goals>
+			        <goal>build</goal>
+			        <goal>push</goal>
+			      </goals>
+			    </execution>
+			  </executions> -->
+			  <configuration>
+			 	<dockerHost>http://120.25.208.44:2375</dockerHost>
+			  	<username>repoUserName</username>
+				<password>repoPassword</password>
+				<repository>www.talelife.com:5000</repository>
+				<tag>${project.version}</tag>
+				<buildArgs>
+			      <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+			    </buildArgs>
+			    
+			  </configuration>
+			</plugin>
+			<!-- <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.3</version>
                 <configuration>
                     <imageName>www.talelife.com:5000/${project.artifactId}.jar</imageName>
-                    <!-- <registryUrl>http://www.talelife.com:5000</registryUrl> -->
+                    <imageName>aa.jar</imageName>
+                    <registryUrl>http://www.talelife.com:5000</registryUrl>
                     <dockerDirectory>src/main/resources</dockerDirectory>
-                    <dockerHost>http://www.talelife.com:5000</dockerHost>
+                    <dockerHost>http://120.25.208.44:2375</dockerHost>
                     <dockerCertPath>D:/tmp</dockerCertPath>
                     <resources>
                         <resource>
@@ -109,7 +114,7 @@
                         </resource>
                     </resources>
                 </configuration>
-            </plugin>
+            </plugin> -->
             <!-- <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
