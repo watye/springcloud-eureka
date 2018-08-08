@@ -102,6 +102,7 @@
                 <configuration>
                     <imageName>localhost:5000/talelife/${project.artifactId}.jar</imageName>
                     <dockerDirectory>src/main/resources</dockerDirectory>
+                    <dockerHost>unix:///var/run/docker.sock</dockerHost>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
