@@ -1,4 +1,4 @@
-package com.talelife.springcloudeureka;
+package com.talelife;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

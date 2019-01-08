@@ -13,12 +13,14 @@ spring:
 eureka:
   instance:
     hostname: localhost
-    prefer-ip-address: true
+    preferIpAddress: true
+    instanceId: eureka.talelife.com
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone:  http://${security.user.name}:${security.user.password}@localhost:8761/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka
+      #defaultZone: http://localhost:8761/eureka
     
 ---
 spring:
