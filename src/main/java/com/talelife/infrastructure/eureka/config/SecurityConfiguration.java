@@ -1,4 +1,4 @@
-package com.talelife.config;
+package com.talelife.infrastructure.eureka.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
