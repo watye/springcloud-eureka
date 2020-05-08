@@ -3,7 +3,6 @@ spring:
     user:
       name: admin
       password: 123456
-#日志配置
 logging:
   level.org.springframework.web: info
 

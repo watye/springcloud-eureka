@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.talelife</groupId>
-	<artifactId>springcloud-eureka</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>springcloud-infrastructure-eureka</artifactId>
+	<version>v1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>springcloud-eureka</name>
-	<description>springcloud-eureka</description>
+	<name>springcloud-infrastructure-eureka</name>
+	<description>springcloud注册中心</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -60,6 +60,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>springcloud-infrastructure-eureka</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

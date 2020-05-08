@@ -22,4 +22,4 @@ eureka:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:35000/eureka 
 ---
 spring:
-  profiles: prod
+  profiles: prd
