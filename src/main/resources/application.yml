@@ -5,9 +5,7 @@ spring:
       password: 123456
 #日志配置
 logging:
-  file: springcloud-eureka.log
   level.org.springframework.web: info
-  debug: false
 
 
 

@@ -1,5 +1,5 @@
 server:
-  port: 8761
+  port: 35000
 spring:
   application:
     name: springcloud-eureka
@@ -19,9 +19,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka
-      #defaultZone: http://localhost:8761/eureka
-    
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:35000/eureka 
 ---
 spring:
   profiles: prod
