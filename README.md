@@ -1,6 +1,6 @@
-# springcloud-eureka
+springcloud注册中心项目
 
-v1.0.1 添加健康监控
+v1.0.0 添加健康监控
 1）pom.xml文件添加
 <!-- 健康监控 ，默认只能查看/actuator/health信息-->
 <dependency>
