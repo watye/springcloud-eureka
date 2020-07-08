@@ -14,3 +14,7 @@ management:
     web:
       exposure:
         include: "*"
+        
+
+升级日志：
+2020-07-08 升级springboot版本到2.3.0-RELEASE，springcloud版本到Hoxton.SR6
