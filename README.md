@@ -1,20 +1,12 @@
 springcloud注册中心项目
 
-v1.0.0 添加健康监控
-1）pom.xml文件添加
-<!-- 健康监控 ，默认只能查看/actuator/health信息-->
-<dependency>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-starter-actuator</artifactId>
-</dependency>
+单节点启动：java -jar springcloud-infrastructure-eureka.jar -Dspring.profiles.active=dev
 
-2）如果要查看其它信息，需要在配置文件添加如下配置
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-        
+集群启动：
+节点1：java -jar springcloud-infrastructure-eureka.jar -Dspring.profiles.active=peer1
+节点2：java -jar springcloud-infrastructure-eureka.jar -Dspring.profiles.active=peer2       
 
 升级日志：
 2020-07-08 升级springboot版本到2.3.0-RELEASE，springcloud版本到Hoxton.SR6
+
+2020-08-03 集群配置

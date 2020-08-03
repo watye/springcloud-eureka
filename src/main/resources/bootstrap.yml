@@ -23,3 +23,39 @@ eureka:
 ---
 spring:
   profiles: prd
+---
+spring:
+  profiles: peer1
+server:
+  port: 35000
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1.talelife.com:35000/eureka
+  server:
+    enableSelfPreservation: false #关闭自我保护模式
+    evictionIntervalTimerInMs: 10000 #清理服务间隔4s，默认60*10000
+---
+spring:
+  profiles: peer2
+server:
+  port: 35000
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka0.talelife.com:35000/eureka
+  server:
+    enableSelfPreservation: false #关闭自我保护模式
+    evictionIntervalTimerInMs: 10000 #清理服务间隔4s，默认60*10000
