@@ -35,7 +35,7 @@ eureka:
     instanceId: ${spring.cloud.client.ip-address}:${server.port}
   client:
     registerWithEureka: true
-    fetchRegistry: false
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1.talelife.com:35000/eureka
   server:
@@ -53,7 +53,7 @@ eureka:
     instanceId: ${spring.cloud.client.ip-address}:${server.port}
   client:
     registerWithEureka: true
-    fetchRegistry: false
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka0.talelife.com:35000/eureka
   server:
